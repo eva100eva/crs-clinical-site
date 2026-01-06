@@ -1,0 +1,87 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Shield, CheckCircle2, FileCheck, Eye } from 'lucide-react';
+
+export default function RiskBasedApproachSection() {
+  return (
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/30 border border-blue-800/40 mb-6">
+            <Shield className="h-4 w-4 text-blue-400" />
+            <span className="text-blue-200 text-sm font-medium tracking-wide">Quality Assurance</span>
+          </div>
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light text-white leading-tight mb-6">
+            Risk-Based Approach to
+            <span className="block font-semibold">Clinical Studies</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12"
+        >
+          <p className="text-lg lg:text-xl text-slate-200 leading-relaxed text-center max-w-5xl mx-auto mb-10">
+            Quality Assurance oversight of operations is risk-based and provides pro-active risk mitigation, 
+            as well as continuous process optimization as we collect data from our ongoing studies. Each deviation 
+            is carefully examined and documented with progressive technology made with purpose. Our processes have 
+            been tested, approved and inspectioned by Health Ministry of RS and audited with various sponsors.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-blue-900/20 rounded-2xl p-6 border border-blue-800/30"
+            >
+              <Eye className="h-8 w-8 text-blue-400 mb-4" />
+              <h3 className="text-white font-semibold mb-2">Pro-active Risk Mitigation</h3>
+              <p className="text-slate-300 text-sm">Continuous monitoring and early intervention strategies</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="bg-blue-900/20 rounded-2xl p-6 border border-blue-800/30"
+            >
+              <FileCheck className="h-8 w-8 text-blue-400 mb-4" />
+              <h3 className="text-white font-semibold mb-2">Process Optimization</h3>
+              <p className="text-slate-300 text-sm">Data-driven continuous improvement methodology</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="bg-blue-900/20 rounded-2xl p-6 border border-blue-800/30"
+            >
+              <CheckCircle2 className="h-8 w-8 text-blue-400 mb-4" />
+              <h3 className="text-white font-semibold mb-2">Regulatory Approved</h3>
+              <p className="text-slate-300 text-sm">Tested and inspected by Health Ministry of RS</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

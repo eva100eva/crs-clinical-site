@@ -1,0 +1,255 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Users, CheckCircle2, ArrowRight, AlertCircle, Shield, Activity } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import Footer from '../components/crs/Footer';
+
+export default function FirstInHumanStudies() {
+  const handleContactClick = () => {
+    window.location.href = '/#contact';
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579154341403-a369b5390333?q=80&w=2070')] bg-cover bg-center opacity-10" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center">
+                <Users className="h-7 w-7 text-white" />
+              </div>
+              <span className="text-blue-300 text-sm font-medium tracking-wide uppercase">Clinical Services</span>
+            </div>
+            <h1 className="text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
+              First-In-Human <span className="font-semibold">Studies</span>
+            </h1>
+            <p className="text-xl text-slate-300 leading-relaxed">
+              Pioneering early clinical development with rigorous safety protocols and adaptive trial designs for novel therapeutic compounds.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-6">
+                Taking the First Critical Step
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                First-in-human (FIH) studies represent a pivotal moment in drug development—the first time a new therapeutic compound is administered to humans. These studies require exceptional expertise, rigorous safety protocols, and adaptive study designs.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Our team specializes in FIH studies for diverse therapeutic areas, with experience in novel mechanisms, biologics, small molecules, and complex dosing strategies requiring specialized monitoring.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-2 gap-6"
+            >
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Shield className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Safety Protocols</h3>
+                <p className="text-sm text-slate-600">Comprehensive risk mitigation strategies</p>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <AlertCircle className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Sentinel Dosing</h3>
+                <p className="text-sm text-slate-600">Staggered administration protocols</p>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Activity className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Real-time Review</h3>
+                <p className="text-sm text-slate-600">Ongoing safety assessment</p>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Users className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Expert Team</h3>
+                <p className="text-sm text-slate-600">Experienced FIH investigators</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-4">
+              Our FIH Study Approach
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Rigorous safety-first methodology with adaptive flexibility
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Sentinel Dosing",
+                description: "Staggered dosing protocols where initial subjects are monitored before proceeding with cohort completion, ensuring maximum safety.",
+                features: ["Staggered administration", "Initial safety assessment", "Dose escalation decisions", "Risk minimization"]
+              },
+              {
+                title: "Starting Dose Selection",
+                description: "Conservative starting dose determination based on preclinical data, pharmacological class, and regulatory guidance.",
+                features: ["NOAEL-based calculations", "MABEL approach for biologics", "Safety margin assessment", "Regulatory alignment"]
+              },
+              {
+                title: "Dose Escalation Schemes",
+                description: "Carefully designed escalation strategies balancing participant safety with efficient dose finding.",
+                features: ["Modified Fibonacci", "Pharmacologically guided", "Safety review committees", "Adaptive designs"]
+              },
+              {
+                title: "Intensive Monitoring",
+                description: "Comprehensive safety monitoring with continuous vital signs, telemetry, and laboratory assessments as needed.",
+                features: ["24/7 physician presence", "Continuous monitoring", "Frequent assessments", "Emergency protocols"]
+              },
+              {
+                title: "Real-Time PK Analysis",
+                description: "Rapid PK sample analysis to inform dose escalation decisions and predict human exposures.",
+                features: ["Quick turnaround bioanalysis", "Preliminary PK review", "Exposure-guided escalation", "Safety predictions"]
+              },
+              {
+                title: "Stopping Rules",
+                description: "Predefined criteria for dose escalation halting and maximum tolerated dose determination.",
+                features: ["Toxicity criteria", "DLT definitions", "Safety thresholds", "MTD identification"]
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{feature.title}</h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">{feature.description}</p>
+                <div className="space-y-2">
+                  {feature.features.map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                      <span className="text-sm text-slate-700">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Therapeutic Experience */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-4">
+              FIH Experience Across Therapeutic Areas
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Small Molecules",
+                description: "Extensive experience with novel small molecule therapeutics across diverse mechanisms of action and therapeutic classes."
+              },
+              {
+                title: "Biologics",
+                description: "First-in-human studies for monoclonal antibodies, fusion proteins, and other biologic entities requiring specialized handling."
+              },
+              {
+                title: "Novel Mechanisms",
+                description: "Pioneering FIH studies for first-in-class compounds with unprecedented mechanisms requiring enhanced monitoring."
+              },
+              {
+                title: "Oncology",
+                description: "Experience with cytotoxic and targeted agents in healthy volunteers or patient populations as appropriate."
+              },
+              {
+                title: "CNS Agents",
+                description: "Specialized protocols for central nervous system drugs with cognitive and safety assessments."
+              },
+              {
+                title: "Cardiovascular",
+                description: "Cardiovascular safety monitoring for compounds with potential cardiac effects including ECG and hemodynamic assessments."
+              }
+            ].map((area, index) => (
+              <motion.div
+                key={area.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-slate-50 rounded-2xl p-8"
+              >
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{area.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{area.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-800">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">
+              Plan Your First-In-Human Study
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Partner with FIH experts who understand the complexity and importance of this milestone
+            </p>
+            <Button 
+              onClick={handleContactClick}
+              className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-6 text-lg rounded-xl"
+            >
+              Contact Us Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}

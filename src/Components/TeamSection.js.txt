@@ -1,0 +1,180 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Users, Award } from 'lucide-react';
+
+const coreTeam = [
+  {
+    name: "Tanja Turk, M.Pharm",
+    role: "Clinical Research Scientist, CEO & Founder of CRS d.o.o.",
+  },
+  {
+    name: "Aleksander Turk",
+    role: "Data Manager, Lead Engineering Scientist. Specialist for OpenClinica",
+  },
+  {
+    name: "Evelina Turk, M. Pharm",
+    role: "Administrative & Submissions Specialist",
+  },
+  {
+    name: "Filip Turk",
+    role: "Study Coordinator and Recruitment Specialist",
+  },
+];
+
+const expertTeam = [
+  {
+    name: "Dr. Matjaž Fležar",
+    specialty: "Respiratory Diseases - Golnik Medical Treatment Center",
+  },
+  {
+    name: "Dr. Tajda Košir Božič",
+    specialty: "Renowned Gastroenterologist",
+  },
+  {
+    name: "Dr. Andrej Kravos",
+    specialty: "Main Practitioner",
+  },
+];
+
+export default function TeamSection() {
+  return (
+    <section className="py-24 lg:py-32 bg-white" id="team">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <span className="text-blue-600 font-medium tracking-wide uppercase text-sm">Our Team</span>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-light text-slate-900">
+            Expert <span className="font-semibold">Leadership & Specialists</span>
+          </h2>
+          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+            Our multidisciplinary team brings together decades of combined experience 
+            in clinical research, regulatory affairs, and medical expertise.
+          </p>
+        </motion.div>
+
+        {/* Core Team */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+              <Users className="h-6 w-6 text-blue-600" />
+            </div>
+            <h3 className="text-2xl font-semibold text-slate-900">Core Team</h3>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {coreTeam.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-6 text-white hover:shadow-lg transition-shadow duration-300"
+              >
+                <h4 className="text-lg font-semibold mb-2">{member.name}</h4>
+                <p className="text-blue-200 text-sm">{member.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Medical Experts */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+              <Award className="h-6 w-6 text-blue-600" />
+            </div>
+            <h3 className="text-2xl font-semibold text-slate-900">Medical Experts</h3>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {expertTeam.map((expert, index) => (
+              <motion.div
+                key={expert.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-6 text-white hover:shadow-lg transition-shadow duration-300"
+              >
+                <h4 className="text-lg font-semibold mb-2">{expert.name}</h4>
+                <p className="text-blue-200 text-sm">{expert.specialty}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Testimonial */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-8 lg:p-12 mb-16 overflow-hidden"
+        >
+          <div className="absolute inset-0 opacity-20">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/5b385b21e_Posnetekzaslona2025-12-29122330.png"
+              alt="Background"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+            <div className="relative">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/9d4fc00c9_BA7A2552-Copy.jpg"
+                alt="Evelina Turk"
+                className="w-64 h-80 lg:w-80 lg:h-96 object-cover rounded-2xl mx-auto shadow-2xl"
+              />
+            </div>
+            <div className="text-white">
+              <div className="text-6xl text-blue-300 mb-4">"</div>
+              <p className="text-xl lg:text-2xl font-light leading-relaxed mb-6">
+                Slovenia is an attractive destination for our clients, as it offers rapid, 
+                cost-effective and high-quality clinical development solutions.
+              </p>
+              <div>
+                <div className="font-semibold text-lg">Evelina Turk, M. Pharm</div>
+                <div className="text-blue-200 mb-2">Business Development Manager</div>
+                <a href="mailto:evelina.turk@crs.si" className="text-blue-300 hover:text-white transition-colors">
+                  evelina.turk@crs.si
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Extended Team */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="bg-slate-50 rounded-3xl p-8 lg:p-12 text-center"
+        >
+          <h3 className="text-2xl font-semibold text-slate-900 mb-4">Extended Network</h3>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Our extended team comprises Medical Monitors, Biostatisticians, and experts 
+            from the Faculty of Pharmacy, along with many other specialized professionals 
+            who support our clinical research operations.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

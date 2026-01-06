@@ -1,0 +1,91 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { CheckCircle2, MapPin, Building2, GraduationCap, Building, Clock, Beaker } from 'lucide-react';
+
+const highlights = [
+  "Only Phase I clinic in Slovenia",
+  "3x nominated Best Clinical Researcher in Europe",
+  "Fast-track CTIS approval",
+  "70+ inpatient beds",
+  "Sponsors from 15+ countries",
+  "University partnerships",
+];
+
+export default function AboutSection() {
+  return (
+    <section className="py-24 lg:py-32 bg-slate-50" id="about">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-blue-600 font-medium tracking-wide uppercase text-sm">About CRS</span>
+            <h2 className="mt-4 text-4xl lg:text-5xl font-light text-slate-900 leading-tight">
+              Slovenia's Leading
+              <span className="block font-semibold">Phase I Clinical Partner</span>
+            </h2>
+            
+            <p className="mt-8 text-lg text-slate-600 leading-relaxed">
+              CRS is a 100% privately owned Slovenian CRO and the only regional Phase I clinic 
+              in Slovenia. Our National Agency allows us to fast-track CTIS approval for studies, 
+              giving sponsors a competitive advantage in EU regulatory pathways.
+            </p>
+
+            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+              Our well-connected network of doctors, scientists, biostatisticians, and data 
+              management experts provides the highest level of complex scientific and logistical 
+              support. We work closely with University Medical Centre and University of Ljubljana 
+              to answer your most complex questions.
+            </p>
+
+            <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+              We aim to be a trusted one-stop destination delivering end-to-end services 
+              throughout the product lifecycle—fast and efficient, without compromising 
+              on quality and patient safety.
+            </p>
+
+            <div className="mt-10 grid grid-cols-2 gap-4">
+              {highlights.map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-3"
+                >
+                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="text-slate-700 text-sm">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/3ebb2bd92_Posnetekzaslona2025-12-25214808.png" 
+                alt="Lake Bled, Slovenia"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+            </div>
+
+            {/* Decorative elements */}
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-600 rounded-full blur-3xl opacity-40" />
+            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-blue-700 rounded-full blur-2xl opacity-30" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}

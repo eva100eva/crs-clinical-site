@@ -1,0 +1,193 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Building2, 
+  Stethoscope, 
+  TrendingUp, 
+  Award, 
+  Users, 
+  MapPin,
+  Calendar,
+  Globe
+} from 'lucide-react';
+
+const milestones = [
+  {
+    year: "1996",
+    title: "Company Founded",
+    description: "CRS Clinical Research Services was established in Slovenia, laying the foundation for excellence in clinical research.",
+    icon: Building2,
+    color: "bg-blue-600",
+  },
+  {
+    year: "2005",
+    title: "Service Expansion",
+    description: "Launched Phase II-IV Monitoring & Clinical Services, broadening our capabilities in clinical research.",
+    icon: Stethoscope,
+    color: "bg-blue-700",
+  },
+  {
+    year: "2010",
+    title: "Facility Growth",
+    description: "Expanded our premises to accommodate growing demand and enhance participant comfort.",
+    icon: TrendingUp,
+    color: "bg-blue-800",
+  },
+  {
+    year: "2017",
+    title: "Phase I Unit Launch",
+    description: "Established our Phase I Unit - the only in-house clinical unit in Slovenia.",
+    icon: Award,
+    color: "bg-indigo-700",
+    highlight: true,
+  },
+  {
+    year: "2020",
+    title: "Industry Leadership",
+    description: "Became the leading Phase I clinic with successful completion of 3-4 complex PK/PD studies with 70+ participants each.",
+    icon: Users,
+    color: "bg-indigo-800",
+  },
+  {
+    year: "2023",
+    title: "Team Expansion",
+    description: "Opened another facility for staff, just 3 minutes from the clinic, supporting our growing team.",
+    icon: MapPin,
+    color: "bg-purple-700",
+  },
+  {
+    year: "2024",
+    title: "Global Presence",
+    description: "Attended CPHI, strengthening our international partnerships. Now celebrating 100+ successful collaborations and 20 years of excellence.",
+    icon: Globe,
+    color: "bg-purple-800",
+    highlight: true,
+  },
+  {
+    year: "2026",
+    title: "Future Vision",
+    description: "Planning to attend Bio-Europe, continuing our commitment to innovation and global collaboration in clinical research.",
+    icon: Calendar,
+    color: "bg-blue-900",
+  },
+];
+
+export default function TimelineSection() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  return (
+    <section className="py-16 lg:py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <span className="text-blue-600 font-medium tracking-wide uppercase text-sm">Our Journey</span>
+          <h2 className="mt-3 text-3xl lg:text-4xl font-light text-slate-900">
+            28 Years of <span className="font-semibold">Clinical Excellence</span>
+          </h2>
+        </motion.div>
+
+        {/* Horizontal Timeline */}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-indigo-200 to-purple-200 hidden lg:block" />
+          
+          {/* Desktop */}
+          <div className="hidden lg:block overflow-x-auto pb-6">
+            <div className="flex gap-6 min-w-max px-4">
+              {milestones.map((milestone, index) => (
+                <motion.div
+                  key={milestone.year}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="relative flex-shrink-0 w-56"
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                >
+                  {/* Dot */}
+                  <motion.div
+                    animate={{
+                      scale: activeIndex === index ? 1.3 : 1,
+                      backgroundColor: activeIndex === index ? '#3b82f6' : '#cbd5e1'
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-6 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-lg z-10"
+                  />
+                  
+                  <div className={`mt-12 bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 border ${
+                    activeIndex === index ? 'border-blue-500 -translate-y-1' : 'border-slate-100'
+                  } ${milestone.highlight ? 'ring-2 ring-blue-300' : ''}`}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className={`${milestone.color} w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                        <milestone.icon className="h-4 w-4 text-white" />
+                      </div>
+                      <span className="text-lg font-bold text-blue-900">{milestone.year}</span>
+                    </div>
+                    <h3 className="text-sm font-semibold text-slate-900 mb-1">{milestone.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">{milestone.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile - Compact Vertical */}
+          <div className="lg:hidden space-y-4">
+            {milestones.map((milestone, index) => (
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="flex gap-4 items-start"
+              >
+                <div className={`${milestone.color} w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                  <milestone.icon className="h-5 w-5 text-white" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-lg font-bold text-blue-900">{milestone.year}</span>
+                    <span className="text-xs text-slate-500">•</span>
+                    <span className="text-sm font-semibold text-slate-900">{milestone.title}</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">{milestone.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Compact Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-12 bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl p-6 lg:p-8"
+        >
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div className="text-2xl lg:text-3xl font-bold text-white mb-1">28+</div>
+              <div className="text-blue-200 text-xs lg:text-sm">Years of Excellence</div>
+            </div>
+            <div>
+              <div className="text-2xl lg:text-3xl font-bold text-white mb-1">100+</div>
+              <div className="text-blue-200 text-xs lg:text-sm">Partnerships</div>
+            </div>
+            <div>
+              <div className="text-2xl lg:text-3xl font-bold text-white mb-1">Only</div>
+              <div className="text-blue-200 text-xs lg:text-sm">Phase I in Slovenia</div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,34 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+export default function CelebrationBanner() {
+  return (
+    <section className="relative py-20 overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/7b75bc19d_Screenshot2025-11-28120412.png" 
+          alt="Celebrating 20 years" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 to-transparent" />
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl"
+        >
+          <div className="text-blue-200 font-medium tracking-wide uppercase text-sm mb-4">
+            EARLY-PHASE CLINICAL RESEARCH
+          </div>
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-white leading-tight">
+            Celebrating <span className="font-semibold">20 years</span> of successful work in the field of clinical research.
+          </h2>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

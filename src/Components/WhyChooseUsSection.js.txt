@@ -1,0 +1,256 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Zap, 
+  Users, 
+  Award, 
+  DollarSign, 
+  Clock, 
+  Building2,
+  MapPin,
+  GraduationCap,
+  Building,
+  Beaker
+} from 'lucide-react';
+
+const reasons = [
+  {
+    icon: Award,
+    title: "20+ Years of Experience",
+    description: "Continuous clinical research operations focused on early-phase trials since 1996.",
+  },
+  {
+    icon: Users,
+    title: "International Reach",
+    description: "Trusted by sponsors from 15+ countries worldwide for Phase I development.",
+  },
+  {
+    icon: DollarSign,
+    title: "Cost-Effective Solutions",
+    description: "Flexible collaboration tailored to small and mid-size biotech and pharma companies.",
+  },
+  {
+    icon: Clock,
+    title: "Efficient Recruitment",
+    description: "Established volunteer database ensures timely study execution and rapid enrollment.",
+  },
+  {
+    icon: Building2,
+    title: "Dedicated Phase I Unit",
+    description: "Up to 40+ inpatient beds for controlled and safe early-phase studies.",
+  },
+  {
+    icon: Zap,
+    title: "Fast-Track Approval",
+    description: "Efficient EU regulatory pathways with streamlined startup for international sponsors.",
+  },
+];
+
+const timeline = [
+  {
+    year: "1996",
+    title: "CRS d.o.o. Established",
+    description: "Founded as a clinical research center in Slovenia, beginning our journey in early-phase research.",
+  },
+  {
+    year: "20+ Years",
+    title: "Continuous Operations",
+    description: "Two decades of uninterrupted clinical research with a strong focus on Phase I trials.",
+  },
+  {
+    year: "Today",
+    title: "GCP-Compliant Excellence",
+    description: "Quality oversight aligned with EMA and national regulations, ensuring the highest standards.",
+  },
+];
+
+export default function WhyChooseSection() {
+  return (
+    <section className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Why Choose CRS */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <span className="text-blue-600 font-medium tracking-wide uppercase text-sm">Why Choose CRS</span>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-light text-slate-900">
+            Experience Meets <span className="font-semibold">Agility</span>
+          </h2>
+          <p className="mt-6 text-lg text-slate-600 max-w-3xl mx-auto">
+            CRS combines the experience of a long-established research center with the agility 
+            and personal attention of a focused early-phase partner.
+          </p>
+        </motion.div>
+
+        {/* Location and Capabilities Banners */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-16">
+          {/* Location Banner */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="relative bg-gradient-to-br from-emerald-950 via-teal-900 to-cyan-900 rounded-3xl p-8 lg:p-10 overflow-hidden shadow-2xl h-full">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full blur-3xl opacity-20" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-cyan-500 to-blue-500 rounded-full blur-3xl opacity-20" />
+              
+              <div className="relative z-10">
+                <div className="flex items-start gap-6">
+                  <div className="inline-flex p-3 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500">
+                    <MapPin className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      Strategic European Location
+                    </h3>
+                    <p className="text-emerald-100 text-lg mb-4">
+                      Ukmarjeva ulica 6, 1000 Ljubljana, Slovenia
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                        <Building2 className="h-6 w-6 text-emerald-300 mb-2" />
+                        <div className="text-white font-semibold text-sm">Modern Facility</div>
+                        <div className="text-emerald-100 text-xs">Purpose-built clinical unit</div>
+                      </div>
+                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                        <GraduationCap className="h-6 w-6 text-cyan-300 mb-2" />
+                        <div className="text-white font-semibold text-sm">Expert Team</div>
+                        <div className="text-cyan-100 text-xs">University partnerships</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Capabilities Banner */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="relative bg-gradient-to-br from-violet-950 via-fuchsia-900 to-purple-900 rounded-3xl p-8 lg:p-10 overflow-hidden shadow-2xl h-full">
+              <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full blur-3xl opacity-20" />
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tr from-fuchsia-500 to-pink-500 rounded-full blur-3xl opacity-20" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-200 via-fuchsia-200 to-pink-200 mb-6">
+                  Core Capabilities
+                </h3>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { icon: Building, label: "70+ Beds", color: "from-violet-400 to-purple-500" },
+                    { icon: Clock, label: "24/7 Care", color: "from-fuchsia-400 to-pink-500" },
+                    { icon: Beaker, label: "In-house Lab", color: "from-purple-400 to-violet-500" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all">
+                      <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${item.color} mb-2`}>
+                        <item.icon className="h-5 w-5 text-white" />
+                      </div>
+                      <div className="text-white font-semibold text-sm">{item.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {reasons.map((reason, index) => (
+            <motion.div
+              key={reason.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200"
+            >
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center mb-6">
+                <reason.icon className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 mb-3">
+                {reason.title}
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                {reason.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Experience Timeline */}
+        <div className="relative -mx-6 lg:-mx-8 mt-24">
+          <div className="relative bg-gradient-to-br from-cyan-900 via-blue-900 to-slate-900 rounded-3xl p-12 lg:p-20 overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/50c0df857_Posnetekzaslona2025-12-29130430.png"
+                alt="Network background"
+                className="w-full h-full object-cover opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/90 via-blue-900/85 to-slate-900/90" />
+            </div>
+
+            <div className="relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-16"
+              >
+                <span className="text-cyan-300 font-medium tracking-wide uppercase text-sm">Experience at a Glance</span>
+                <h2 className="mt-4 text-4xl lg:text-5xl font-light text-white">
+                  Our <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">Journey</span>
+                </h2>
+              </motion.div>
+
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400/30 via-blue-400/60 to-cyan-400/30" />
+                
+                <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+                  {timeline.map((item, index) => (
+                    <motion.div
+                      key={item.year}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.2 }}
+                      className="relative"
+                    >
+                      {/* Timeline dot */}
+                      <div className="hidden lg:flex absolute top-20 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 items-center justify-center shadow-lg shadow-cyan-500/50">
+                        <div className="w-4 h-4 rounded-full bg-white" />
+                      </div>
+
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all mt-16 lg:mt-24">
+                        <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold text-lg mb-4">
+                          {item.year}
+                        </div>
+                        <h3 className="text-xl font-semibold text-white mb-3">
+                          {item.title}
+                        </h3>
+                        <p className="text-cyan-100 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

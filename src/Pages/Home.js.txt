@@ -1,0 +1,36 @@
+import React from 'react';
+import HeroSection from '../components/crs/HeroSection';
+import CelebrationBanner from '../components/crs/CelebrationBanner';
+import ServicesSection from '../components/crs/ServicesSection';
+import RegulatoryServicesSection from '../components/crs/RegulatoryServicesSection';
+import RiskBasedApproachSection from '../components/crs/RiskBasedApproachSection';
+import AboutSection from '../components/crs/AboutSection';
+import TimelineSection from '../components/crs/TimelineSection';
+import TeamSection from '../components/crs/TeamSection';
+import WhyChooseSection from '../components/crs/WhyChooseSection';
+import StatsSection from '../components/crs/StatsSection';
+import FacilitiesSection from '../components/crs/FacilitiesSection';
+import CapabilitiesSection from '../components/crs/CapabilitiesSection';
+import ContactSection from '../components/crs/ContactSection';
+import Footer from '../components/crs/Footer';
+
+export default function Home() {
+  return (
+    <div className="w-full">
+      <HeroSection />
+      <CelebrationBanner />
+      <ServicesSection />
+      <RegulatoryServicesSection />
+      <RiskBasedApproachSection />
+      <StatsSection />
+      <AboutSection />
+      <TimelineSection />
+      <TeamSection />
+      <WhyChooseSection />
+      <FacilitiesSection />
+      <CapabilitiesSection />
+      <ContactSection />
+      <Footer />
+    </div>
+  );
+}

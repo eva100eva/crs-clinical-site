@@ -1,0 +1,359 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ShieldCheck, Users, FileText, Coins, Download, Loader2 } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
+import { toast } from 'sonner';
+
+export default function ForStudyParticipants() {
+  const [formData, setFormData] = useState({
+    full_name: '',
+    email: '',
+    phone: '',
+    date_of_birth: '',
+    gender: '',
+    address: '',
+    medical_conditions: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Create participant record
+      await base44.entities.Participant.create(formData);
+
+      // Send email notification
+      await base44.integrations.Core.SendEmail({
+        to: 'prijave@crs.si',
+        subject: 'New Study Participant Application',
+        body: `
+          New participant application received:
+          
+          Name: ${formData.full_name}
+          Email: ${formData.email}
+          Phone: ${formData.phone}
+          Date of Birth: ${formData.date_of_birth}
+          Gender: ${formData.gender}
+          Address: ${formData.address}
+          Medical Conditions: ${formData.medical_conditions || 'None specified'}
+        `
+      });
+
+      toast.success('Application submitted successfully! We will contact you soon.');
+      
+      // Reset form
+      setFormData({
+        full_name: '',
+        email: '',
+        phone: '',
+        date_of_birth: '',
+        gender: '',
+        address: '',
+        medical_conditions: ''
+      });
+    } catch (error) {
+      toast.error('Failed to submit application. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white pt-20">
+      {/* Hero Section */}
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/79c88536a_Posnetekzaslona2025-12-29122330.png" 
+            alt="Clinical Research Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-blue-950/40" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl lg:text-6xl font-light text-white leading-tight mb-6">
+              Participate in 
+              <span className="block font-semibold text-blue-400">Clinical Studies</span>
+            </h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              CRS regularly conducts supervised clinical studies that contribute to the development of new medicines. 
+              Volunteers receive medical examinations and appropriate compensation in a safe, controlled environment.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Medical Supervision",
+                description: "Medical supervision by experienced clinical staff"
+              },
+              {
+                icon: FileText,
+                title: "Ethics Approval",
+                description: "Ethics committee approval for all studies"
+              },
+              {
+                icon: Users,
+                title: "Informed Consent",
+                description: "Clear information and informed consent"
+              },
+              {
+                icon: Coins,
+                title: "Compensation",
+                description: "Financial compensation for participation"
+              }
+            ].map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center mx-auto mb-4">
+                  <benefit.icon className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="text-blue-600 text-6xl mb-6">"</div>
+              <blockquote className="text-2xl lg:text-3xl text-slate-900 font-light leading-relaxed mb-8">
+                CRS has more than 24 years of experience in conducting early phase clinical trials in Slovenia with a reputation for consistently delivering high quality data that is accepted by international regulatory agencies.
+              </blockquote>
+              <div className="flex items-center gap-4">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/41ebc1234_IMG_20220604_190341.jpg" 
+                  alt="Tanja Turk"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-slate-900">Tanja Turk, M. Pharm</div>
+                  <div className="text-slate-600">CEO & Founder of CRS d.o.o.</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative h-[400px] overflow-hidden rounded-3xl shadow-2xl"
+            >
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/4310a9f06_IMG_1751.jpg" 
+                alt="CRS Team"
+                className="w-full h-full object-cover object-center"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form Section */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 to-white" id="apply">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-4">
+              Become a Volunteer
+            </h2>
+            <p className="text-lg text-slate-600">
+              Fill out the application form below and we'll contact you with available study opportunities.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-3xl shadow-xl p-8 lg:p-12"
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Full Name *
+                  </label>
+                  <Input
+                    required
+                    placeholder="John Doe"
+                    value={formData.full_name}
+                    onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                    className="w-full"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Email *
+                  </label>
+                  <Input
+                    required
+                    type="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Phone Number *
+                  </label>
+                  <Input
+                    required
+                    type="tel"
+                    placeholder="+386 XX XXX XXX"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Date of Birth
+                  </label>
+                  <Input
+                    type="date"
+                    value={formData.date_of_birth}
+                    onChange={(e) => setFormData({ ...formData, date_of_birth: e.target.value })}
+                    className="w-full"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Gender
+                  </label>
+                  <Select
+                    value={formData.gender}
+                    onValueChange={(value) => setFormData({ ...formData, gender: value })}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select gender" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Address
+                  </label>
+                  <Input
+                    placeholder="Street, City, Country"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Medical Conditions / Medications
+                </label>
+                <Textarea
+                  placeholder="Please list any medical conditions, allergies, or medications you're currently taking..."
+                  value={formData.medical_conditions}
+                  onChange={(e) => setFormData({ ...formData, medical_conditions: e.target.value })}
+                  className="w-full h-32"
+                />
+              </div>
+
+              <div className="pt-4">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-base font-medium rounded-xl"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    'Submit Application'
+                  )}
+                </Button>
+              </div>
+
+              <p className="text-sm text-slate-500 text-center">
+                By submitting this form, you agree to be contacted about clinical study opportunities.
+              </p>
+            </form>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Download Brochure Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <Button 
+            size="lg"
+            variant="outline"
+            className="border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-6 text-base font-medium rounded-xl"
+            onClick={() => window.open('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69524b12794349e7f2f92e2c/b95c68b57_CRSBrochure2025May.pdf', '_blank')}
+          >
+            <Download className="mr-2 h-5 w-5" />
+            Download Participant Brochure
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}

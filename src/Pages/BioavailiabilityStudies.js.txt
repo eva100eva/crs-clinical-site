@@ -1,0 +1,255 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Pill, CheckCircle2, ArrowRight, Droplet, Zap, Scale } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import Footer from '../components/crs/Footer';
+
+export default function BioavailabilityStudies() {
+  const handleContactClick = () => {
+    window.location.href = '/#contact';
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=2080')] bg-cover bg-center opacity-10" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center">
+                <Pill className="h-7 w-7 text-white" />
+              </div>
+              <span className="text-blue-300 text-sm font-medium tracking-wide uppercase">Clinical Services</span>
+            </div>
+            <h1 className="text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
+              Bioavailability <span className="font-semibold">Studies</span>
+            </h1>
+            <p className="text-xl text-slate-300 leading-relaxed">
+              Absolute and relative bioavailability assessments to characterize drug absorption and systemic exposure.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-6">
+                Understanding Drug Absorption
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Bioavailability studies are essential for characterizing how much drug reaches systemic circulation and how formulation, route of administration, or physiological factors affect absorption.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Our bioavailability studies support formulation development, route-of-administration comparisons, and regulatory submissions with robust PK assessments and scientific analysis.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-2 gap-6"
+            >
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Droplet className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Absolute BA</h3>
+                <p className="text-sm text-slate-600">IV vs. oral comparisons</p>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Scale className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Relative BA</h3>
+                <p className="text-sm text-slate-600">Formulation comparisons</p>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Zap className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Food Effects</h3>
+                <p className="text-sm text-slate-600">Meal impact assessments</p>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6">
+                <Pill className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold text-slate-900 mb-2">Route Studies</h3>
+                <p className="text-sm text-slate-600">Multiple administration routes</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Study Types */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-4">
+              Bioavailability Study Types
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Comprehensive assessments for formulation and clinical development
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Absolute Bioavailability",
+                description: "Comparing oral formulation to IV administration to determine the fraction of drug reaching systemic circulation. Critical for understanding first-pass metabolism.",
+                features: ["IV reference administration", "Oral test formulation", "AUC comparison", "F calculation"]
+              },
+              {
+                title: "Relative Bioavailability",
+                description: "Comparing different formulations or strengths to establish bioequivalence or dose proportionality across your product line.",
+                features: ["Formulation comparison", "Strength comparison", "Crossover design", "Relative exposure"]
+              },
+              {
+                title: "Food Effect Studies",
+                description: "Evaluating the impact of meals on drug absorption to optimize dosing instructions and labeling for clinical use.",
+                features: ["Fed vs. fasted states", "High-fat meal protocol", "Timing considerations", "Clinical recommendations"]
+              },
+              {
+                title: "Route of Administration Studies",
+                description: "Comparing bioavailability across different routes (oral, sublingual, transdermal, etc.) to support product development.",
+                features: ["Multiple routes", "Absorption comparison", "Formulation optimization", "Route selection"]
+              },
+              {
+                title: "Modified-Release Formulations",
+                description: "Characterizing the PK profile of sustained, delayed, or controlled-release formulations versus immediate-release products.",
+                features: ["MR vs. IR comparison", "Release profile", "Steady-state assessment", "Clinical impact"]
+              },
+              {
+                title: "Site-Specific Absorption",
+                description: "Using regional perfusion or other techniques to understand absorption at specific GI locations for formulation development.",
+                features: ["Regional absorption", "GI site assessment", "Mechanistic insights", "Formulation strategy"]
+              }
+            ].map((study, index) => (
+              <motion.div
+                key={study.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{study.title}</h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">{study.description}</p>
+                <div className="space-y-2">
+                  {study.features.map((feature) => (
+                    <div key={feature} className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                      <span className="text-sm text-slate-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Capabilities */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-slate-900 mb-4">
+              Comprehensive BA Study Support
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "IV Administration Expertise",
+                description: "Experienced staff for safe IV administration with appropriate monitoring and emergency protocols for absolute BA studies."
+              },
+              {
+                title: "Complex PK Sampling",
+                description: "Intensive sampling schedules with experienced phlebotomy staff, multiple timepoints, and rapid sample processing."
+              },
+              {
+                title: "Formulation Handling",
+                description: "Experience with diverse formulation types including capsules, tablets, liquids, patches, and specialized delivery systems."
+              },
+              {
+                title: "Crossover Study Design",
+                description: "Expertise in multi-period crossover designs with appropriate washout periods and sequence randomization."
+              },
+              {
+                title: "PK Analysis",
+                description: "Non-compartmental analysis using Phoenix WinNonlin with calculation of all relevant PK parameters."
+              },
+              {
+                title: "Regulatory Documentation",
+                description: "Complete study reports suitable for regulatory submissions with clear presentation of BA results and conclusions."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-slate-50 rounded-2xl p-6"
+              >
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-800">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">
+              Design Your Bioavailability Study
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Discuss your formulation development and BA study needs with our experts
+            </p>
+            <Button 
+              onClick={handleContactClick}
+              className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-6 text-lg rounded-xl"
+            >
+              Contact Us Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
